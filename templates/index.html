@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Attraction in Thailand{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body p-4">
+        <h1 class="mb-3 h2">พระบรมมหาราชวัง (The Grand Palace)</h1>
+        <p>
+            พระบรมมหาราชวังเป็นสถานที่ท่องเที่ยวที่เป็นสัญลักษณ์ของประเทศไทย
+            สร้างขึ้นในปี พ.ศ. 2325 ประกอบด้วยสถาปัตยกรรมไทยที่งดงามและวัดพระแก้ว
+            ซึ่งเป็นที่ประดิษฐานของพระแก้วมรกต พระพุทธรูปคู่บ้านคู่เมืองของไทย
+        </p>
+        <img src="{{ url_for('static', filename='image/royal.jpg') }}" alt="The Grand Palace" class="img-fluid rounded shadow-sm">
+    </div>
+</div>
+{% endblock %}

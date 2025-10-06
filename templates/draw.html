@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Draw a Pattern{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body p-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="mb-0 h2">Draw a Pattern</h1>
+            <!-- 
+              แก้ไขตรงนี้: เปลี่ยนจาก url_for('dashboard') เป็น url_for('home')
+            -->
+            <a href="{{ url_for('home') }}" class="btn btn-outline-secondary btn-sm">&larr; Back to Home</a>
+        </div>
+
+        <form id="drawForm" data-url="{{ url_for('draw_pattern') }}" class="row g-3 align-items-center mb-4 p-3 bg-light rounded border">
+            <div class="col-sm">
+                <label for="rowsInput" class="form-label">How many rows?:</label>
+                <input type="number" class="form-control" id="rowsInput" name="rows" placeholder="e.g., 5" min="1" required>
+            </div>
+            
+            <div class="col-sm">
+                <label for="charInput" class="form-label">Which character?:</label>
+                <input type="text" class="form-control" id="charInput" name="char" value="x" maxlength="1" required>
+            </div>
+            
+            <div class="col-auto align-self-end">
+                <button type="submit" class="btn btn-primary">Draw!</button>
+                <a href="{{ url_for('draw_pattern') }}" class="btn btn-danger">Reset</a>
+            </div>
+        </form>
+        
+        <hr>
+
+        <div id="result-container">
+        {% if has_result %}
+            <h2>Result for {{ num_rows }} rows with character '{{ character }}':</h2>
+            <pre class="p-3 rounded bg-dark text-white-50">{% for line in pattern %}{{ line }}
+{% endfor %}</pre>
+        {% else %}
+            <p class="text-muted">Please enter the number of rows and a character, then click "Draw!".</p>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/draw.js') }}"></script>
+{% endblock %}
+

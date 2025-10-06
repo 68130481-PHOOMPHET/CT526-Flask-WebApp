@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}My Student ID{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h1 class="display-5">Student ID</h1>
+        <p class="lead">รหัสนักศึกษาของฉันคือ:</p>
+        <p class="display-4 fw-bold text-primary">{{ student_id }}</p>
+    </div>
+{% endblock %}
